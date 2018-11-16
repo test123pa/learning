@@ -1,0 +1,9 @@
+
+@Transactional只能作用于public方法，原因在于spring aop动态代理只能代理public方法。
+@Transactional不能自调用增强。即自身调用带有该注解的方法，注解不生效。
+带有@Transactional方法调用任何方法都会在一个事务中。
+手动回滚，显示调用：TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+
+
+参考：
+https://www.ibm.com/developerworks/cn/java/j-master-spring-transactional-use/

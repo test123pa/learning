@@ -1,0 +1,2 @@
+hashtable的方法都加了synchronized，都是同步的方法。
+concurrenthashmap同过cas操作和synchronized保证方法同步。

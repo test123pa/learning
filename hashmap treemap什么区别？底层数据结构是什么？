@@ -1,5 +1,23 @@
-hashmap是通过数组、链表、红黑树组成的。
-treemap是通过红黑树表示的。
+hashmap是通过数组、链表、红黑树组成的。   随机获取
+treemap是通过红黑树表示的。              按key排序
+linkedHashmap继承hashmap，通过before和after指针记录顺序。  返回插入顺序
+
+在需要排序的Map时候才用TreeMap。
+
+区别：
+HashMap：数组方式存储key/value，线程非安全，允许null作为key和value，key不可以重复，value允许重复，不保证元素迭代顺序是按照插入时的顺序，
+key的hash值是先计算key的hashcode值，然后再进行计算，每次容量扩容会重新计算key的hash值，会消耗资源，要求key必须重写equals和hashcode方法
+默认初始容量16，加载因子0.75，扩容为旧容量乘2，查找元素快，如果key一样则比较value，如果value不一样，则按照链表结构存储value，
+就是一个key后面有多个value；
+
+TreeMap：基于红黑二叉树的NavigableMap的实现，线程非安全，不允许null，key不可以重复，value允许重复，
+存入TreeMap的元素应当实现Comparable接口或者实现Comparator接口，会按照排序后的顺序迭代元素，
+两个相比较的key不得抛出classCastException。主要用于存入元素的时候对元素进行自动排序，迭代输出的时候就按排序顺序输出
+
+LinkedHashMap
+　　LinkedHashMap保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的。也可以在构造时带参数，按照应用次数排序。
+在遍历的时候会比HashMap慢，不过有种情况例外：当HashMap容量很大，实际数据较少时，遍历起来可能会比LinkedHashMap慢。
+因为LinkedHashMap的遍历速度只和实际数据有关，和容量无关，而HashMap的遍历速度和他的容量有关。
 
 红黑树原理：
 http://www.cnblogs.com/skywang12345/p/3245399.html

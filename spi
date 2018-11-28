@@ -1,0 +1,19 @@
+api：实现方提供接口说明和实现，调用方直接调用接口。
+spi：服务方提供接口说明，实现方实现接口。
+
+ServiceLoader，从官方的文档来说，它主要是用来装载一系列的service provider。
+服务方提供接口，实现方在jar包的META-INF/services/目录下创建以接口名为文件名的文件，该文件里就是具体的实现类。
+
+示例：jdk DriverManager  registerDriver
+
+jdk spi需要遵循的规范：
+需要一个目录： 
+    meta/service
+    放到classpath下面
+目录下面防止一个配置文件
+    文件名是要扩展的接口全名
+    文件内部为要实现的接口实现类
+    文件必须为utf-8编码
+如何使用
+    ServiceLoad.laod(xx.class)
+    ServiceLoad<HelloInterface> loads = ServiceLoad.laod(HelloInterface.class)
